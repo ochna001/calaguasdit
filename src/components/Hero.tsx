@@ -1,34 +1,29 @@
 "use client";
 
 import { useRef } from "react";
-import Image from "next/image";
 import { motion, useScroll, useTransform } from "framer-motion";
+import { LiquidGlassShader } from "./LiquidGlassShader";
 
 export function Hero() {
     const containerRef = useRef(null);
     const { scrollY } = useScroll();
 
     const y1 = useTransform(scrollY, [0, 500], [0, 200]);
-    const y2 = useTransform(scrollY, [0, 500], [0, -150]);
     const scale = useTransform(scrollY, [0, 500], [1.05, 1.2]);
 
     return (
         <section ref={containerRef} className="relative h-[110vh] w-full overflow-hidden flex items-center justify-center">
-            {/* Background Image with Parallax and Blur */}
+            {/* Liquid Glass WebGL Background */}
             <motion.div
                 style={{ y: y1, scale }}
                 className="absolute inset-0 z-0"
             >
-                <Image
-                    src="/images/main_picture.jpeg"
-                    alt="Calaguas Island Hero"
-                    fill
-                    priority
-                    quality={100}
-                    className="object-cover contrast-[1.1] brightness-[1.05] saturate-[1.1] blur-sm scale-110"
+                <LiquidGlassShader
+                    imageSrc="/images/main_picture.jpeg"
+                    className="w-full h-full object-cover"
                 />
                 {/* Overlay */}
-                <div className="absolute inset-0 bg-gradient-to-b from-black/20 via-transparent to-background/50" />
+                <div className="absolute inset-0 bg-gradient-to-b from-black/20 via-transparent to-background/80" />
             </motion.div>
 
             {/* Content */}
