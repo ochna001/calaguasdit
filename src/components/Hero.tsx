@@ -3,6 +3,8 @@
 import { useRef } from "react";
 import Image from "next/image";
 import { motion, useScroll, useTransform } from "framer-motion";
+import { LiquidDistortion } from "./LiquidDistortion";
+import { FloatingParticles } from "./FloatingParticles";
 
 export function Hero() {
     const containerRef = useRef(null);
@@ -25,10 +27,17 @@ export function Hero() {
                     fill
                     priority
                     quality={100}
-                    className="object-cover contrast-[1.1] brightness-[1.05] saturate-[1.1] blur-sm scale-110"
+                    className="object-cover contrast-[1.1] brightness-[1.1] saturate-[1.1] blur-[2px] scale-110"
                 />
+
+                {/* WebGL Overlay for Liquid Feeling */}
+                <LiquidDistortion imageUrl="/images/main_picture.jpeg" />
+
+                {/* Floating Atmospheric Particles */}
+                <FloatingParticles />
+
                 {/* Overlay */}
-                <div className="absolute inset-0 bg-gradient-to-b from-black/20 via-transparent to-background/50" />
+                <div className="absolute inset-0 bg-gradient-to-b from-black/10 via-transparent to-background/60" />
             </motion.div>
 
             {/* Content */}
