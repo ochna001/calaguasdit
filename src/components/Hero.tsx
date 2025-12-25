@@ -20,7 +20,7 @@ export function Hero() {
                 className="absolute inset-0 z-0"
             >
                 <Image
-                    src="/images/main_picture_4k.jpg"
+                    src="/images/main_picture.jpeg"
                     alt="Calaguas Island Hero"
                     fill
                     priority
