@@ -20,12 +20,12 @@ export function Hero() {
                 className="absolute inset-0 z-0"
             >
                 <Image
-                    src="/images/main_picture.jpg"
+                    src="/images/main_picture_4k.jpg"
                     alt="Calaguas Island Hero"
                     fill
                     priority
                     quality={100}
-                    className="object-cover contrast-[1.05] brightness-[1.02]"
+                    className="object-cover contrast-[1.1] brightness-[1.05] saturate-[1.1] [image-rendering:auto]"
                 />
                 {/* Overlay */}
                 <div className="absolute inset-0 bg-gradient-to-b from-black/20 via-transparent to-background" />

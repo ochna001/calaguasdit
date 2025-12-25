@@ -8,9 +8,10 @@ import { Menu, X, Palmtree } from "lucide-react";
 import { cn } from "@/lib/utils";
 
 const navLinks = [
-    { name: "Home", href: "/" },
-    { name: "Packages", href: "/packages" },
-    { name: "About Us", href: "/about" },
+    { name: "Home", href: "/#" },
+    { name: "About Us", href: "/#about" },
+    { name: "Experiences", href: "/#activities" },
+    { name: "Packages", href: "/#packages" },
 ];
 
 export function Navbar() {
