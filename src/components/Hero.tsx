@@ -3,18 +3,18 @@
 import { useRef } from "react";
 import Image from "next/image";
 import { motion, useScroll, useTransform } from "framer-motion";
-import { LiquidGlassShader } from "./LiquidGlassShader";
 
 export function Hero() {
     const containerRef = useRef(null);
     const { scrollY } = useScroll();
 
     const y1 = useTransform(scrollY, [0, 500], [0, 200]);
+    const y2 = useTransform(scrollY, [0, 500], [0, -150]);
     const scale = useTransform(scrollY, [0, 500], [1.05, 1.2]);
 
     return (
         <section ref={containerRef} className="relative h-[110vh] w-full overflow-hidden flex items-center justify-center">
-            {/* Background Image with Parallax */}
+            {/* Background Image with Parallax and Blur */}
             <motion.div
                 style={{ y: y1, scale }}
                 className="absolute inset-0 z-0"
@@ -25,28 +25,25 @@ export function Hero() {
                     fill
                     priority
                     quality={100}
-                    className="object-cover contrast-[1.1] brightness-[1.05] saturate-[1.1] scale-110"
+                    className="object-cover contrast-[1.1] brightness-[1.05] saturate-[1.1] blur-sm scale-110"
                 />
                 {/* Overlay */}
                 <div className="absolute inset-0 bg-gradient-to-b from-black/20 via-transparent to-background/50" />
             </motion.div>
 
-            {/* Liquid Glass Content Card */}
+            {/* Content */}
             <div className="relative z-10 text-center px-6 max-w-5xl mx-auto">
                 <motion.div
                     initial={{ opacity: 0, scale: 0.9 }}
                     animate={{ opacity: 1, scale: 1 }}
                     transition={{ duration: 1.2, ease: [0.16, 1, 0.3, 1] }}
-                    className="relative rounded-[64px] overflow-hidden"
-                    style={{ minHeight: "500px" }}
+                    className="relative group p-1 md:p-1.5 rounded-[64px] overflow-hidden"
                 >
-                    {/* WebGL Liquid Glass Shader Layer */}
-                    <LiquidGlassShader
-                        imageSrc="/images/main_picture.jpeg"
-                        className="absolute inset-0 z-0"
-                    />
+                    {/* Liquid Glass Layer */}
+                    <div className="absolute inset-0 bg-white/10 backdrop-blur-3xl rounded-[62px] border border-white/30 shadow-[0_32px_64px_-16px_rgba(0,0,0,0.2)]" />
+                    <div className="absolute inset-0 bg-gradient-to-br from-white/20 via-transparent to-primary/5 rounded-[62px]" />
 
-                    {/* Inner Content - must be above the shader */}
+                    {/* Inner Content */}
                     <div className="relative z-10 p-8 md:p-16 rounded-[62px]">
                         <motion.span
                             initial={{ opacity: 0, y: 10 }}
